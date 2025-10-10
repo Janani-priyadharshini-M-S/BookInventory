@@ -1,27 +1,11 @@
 package com.example.bookInventory.entity;
-
+ 
 import jakarta.persistence.*;
-
+ 
 @Entity
 @Table(name = "author")
 public class Author {
  
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AuthorID")
-    private Long authorId;
- 
-    @Column(name = "FirstName", length = 50, nullable = false)
-    private String firstName;
- 
-    @Column(name = "LastName", length = 50, nullable = false)
-    private String lastName;
- 
-    @Column(name = "PhotoUrl", length = 255)
-    private String photoUrl;
-    
-    
-
     public Author() {
 		super();
 	}
@@ -36,8 +20,7 @@ public class Author {
  
 	@Override
 	public String toString() {
-		return "Author [authorId=" + authorId + ", firstName=" + firstName + ", lastName=" + lastName + ", "
-				+ "photoUrl="
+		return "Author [authorId=" + authorId + ", firstName=" + firstName + ", lastName=" + lastName + ", photoUrl="
 				+ photoUrl + "]";
 	}
  
@@ -72,4 +55,18 @@ public class Author {
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
 	}
+ 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "AuthorID")
+    private Long authorId;
+ 
+    @Column(name = "FirstName", length = 50, nullable = false)
+    private String firstName;
+ 
+    @Column(name = "LastName", length = 50, nullable = false)
+    private String lastName;
+ 
+    @Column(name = "PhotoUrl", length = 255)
+    private String photoUrl;
 }
