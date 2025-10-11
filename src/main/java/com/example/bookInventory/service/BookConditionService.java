@@ -12,4 +12,6 @@ public interface BookConditionService {
     BookCondition updatePrice(Integer ranks, BigDecimal price);
     BookCondition updateDescription(Integer ranks, String description);
     BookCondition updateFullDescription(Integer ranks, String fullDescription);
+    boolean existsByRanks(Integer ranks);
 }
+  

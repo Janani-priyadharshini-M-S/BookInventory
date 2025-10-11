@@ -1,3 +1,4 @@
+
 package com.example.bookInventory.service.impl;
 
 import com.example.bookInventory.entity.Inventory;
@@ -17,12 +18,22 @@ public class InventoryServiceImpl implements InventoryService {
     private InventoryRepository inventoryRepository;
 
     @Override
+    public boolean saveInventoryIfNotExists(Inventory inventory) {
+        boolean exists = inventoryRepository.existsByInventoryId(inventory.getInventoryId());
+        if (exists) {
+            return false;
+        }
+        inventoryRepository.save(inventory);
+        return true;
+    }
+
+    @Override
     public Inventory save(Inventory inventory) {
         return inventoryRepository.save(inventory);
     }
 
     @Override
-    public Inventory getById(Long inventoryId) {
+    public Inventory getByInventoryId(Long inventoryId) {
         return inventoryRepository.findById(inventoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Inventory not found with ID: " + inventoryId));
     }
@@ -34,7 +45,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public Inventory updatePurchasedStatus(Long inventoryId, Boolean purchased) {
-        Inventory inventory = getById(inventoryId);
+        Inventory inventory = getByInventoryId(inventoryId);
         inventory.setPurchased(purchased);
         return inventoryRepository.save(inventory);
     }
@@ -46,4 +57,10 @@ public class InventoryServiceImpl implements InventoryService {
         }
         inventoryRepository.deleteById(inventoryId);
     }
+
+	@Override
+	public Inventory getById(Long inventoryId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

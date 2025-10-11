@@ -1,3 +1,4 @@
+
 package com.example.bookInventory.entity;
 
 import jakarta.persistence.*;
@@ -20,9 +21,11 @@ public class Inventory {
     @Column(name = "Purchased", nullable = false)
     private Boolean purchased;
 
+
+
     public Inventory() {}
 
-    public Inventory(Long inventoryId, String isbn, Integer ranks, Boolean purchased) {
+    public Inventory(Long inventoryId, String isbn, Integer ranks, Boolean purchased, Long bookId) {
         this.inventoryId = inventoryId;
         this.isbn = isbn;
         this.ranks = ranks;
@@ -60,6 +63,8 @@ public class Inventory {
     public void setPurchased(Boolean purchased) {
         this.purchased = purchased;
     }
+
+ 
 
     @Override
     public String toString() {

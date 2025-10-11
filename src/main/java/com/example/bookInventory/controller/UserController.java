@@ -65,5 +65,3 @@ public class UserController {
     }
 }
 
-
-//crt the code of post

@@ -16,12 +16,13 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    //1
+
     @PostMapping("/post")
-    public ResponseEntity<Category> addCategory(@RequestBody Category category) {
-        Category saved = categoryService.save(category);
-        return ResponseEntity.ok(saved);
-    }
+    public ResponseEntity<String> addCategory(@RequestBody Category category) {
+    categoryService.save(category);
+    return ResponseEntity.ok("category added successfully");
+     }
+
 
     @GetMapping("/{catId}")
     public ResponseEntity<Category> getCategoryById(@PathVariable Long catId) {
@@ -47,8 +48,3 @@ public class CategoryController {
         return ResponseEntity.noContent().build();
     }
 }
-
-
-//1 post output message 
-
-
