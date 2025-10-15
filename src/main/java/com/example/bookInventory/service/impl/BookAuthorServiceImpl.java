@@ -34,7 +34,8 @@ public class BookAuthorServiceImpl implements BookAuthorService{
 	@Override
 	public void removeAuthorFromBook(String isbn, Long authorId) {
 		// TODO Auto-generated method stub
+		BookAuthorId id=new BookAuthorId(isbn,authorId);
+		bookAuthorRepository.deleteById(id);
 		
 	}
-
 }
